@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "https://otago.github.io/graduation-form/build/static/css/main.31d6cfe0.css",
+    "main.js": "https://otago.github.io/graduation-form/build/static/js/main.9792d853.js",
+    "static/js/787.223550ad.chunk.js": "https://otago.github.io/graduation-form/build/static/js/787.223550ad.chunk.js",
+    "index.html": "https://otago.github.io/graduation-form/build/index.html",
+    "main.9792d853.js.map": "https://otago.github.io/graduation-form/build/static/js/main.9792d853.js.map",
+    "787.223550ad.chunk.js.map": "https://otago.github.io/graduation-form/build/static/js/787.223550ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.9792d853.js"
+  ]
+}
