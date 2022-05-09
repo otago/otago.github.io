@@ -1,23 +1,43 @@
 import React from "react";
 import { isExpired, decodeToken } from "react-jwt";
 import "./App.css";
-import { client } from "./ApolloClient/client";
-import { ApolloProvider } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloProvider,
+  createHttpLink,
+  InMemoryCache,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import GraduationForm from "./components/GraduationForm";
 
 function App({ element }) {
+  const tokenURL = element.getAttribute("data-token-url");
+  const graphqlURL = element.getAttribute("data-graphql-url");
   const token = new URLSearchParams(window.location.search).get("token");
-  const myDecodedToken = decodeToken(token);
   if (isExpired(token)) {
-    return (window.location.href = `https://jeffrey.op.ac.nz/tokens/token?ignore-saml-redirect=1&BackURL=${
+    return (window.location.href = `${tokenURL}&BackURL=${
       window.location.href.split("?")[0]
     }`);
   }
-  console.log(myDecodedToken);
-  const graphqlURL = element.getAttribute("data-graphql-url");
+  const httpLink = createHttpLink({
+    uri: graphqlURL,
+  });
+  const authLink = setContext((_, { headers }) => {
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    };
+  });
+  const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+  });
   return (
     <div className="graduation-form">
-      <ApolloProvider client={client(graphqlURL)}>
-        Graduation Form
+      <ApolloProvider client={client}>
+        <GraduationForm />
       </ApolloProvider>
     </div>
   );
