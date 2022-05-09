@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import api from "../api";
+import CeremonyForm from "./CeremonyForm";
+import CeremonyOptions from "./CeremonyOptions";
 
 const GraduationForm = () => {
-  const limit = 25;
-  const [offset, setOffset] = useState(0);
-  const [active, setActive] = useState(false);
-  const { data, loading, error } = api.GetCeremonies(limit, offset, !active);
-  //   const edges = data && active ? data.paginatedReadCeremonies.edges : [];
+  const { data, loading, error } = api.GetCeremonies(25, 0);
+  const [ceremony, setCeremony] = useState(null);
   useEffect(() => {
     //
-  }, [loading, offset]);
+  }, [loading, ceremony]);
   if (loading) {
     return <div>loading...</div>;
   }
@@ -17,8 +16,17 @@ const GraduationForm = () => {
     console.log(error);
     return <div>error</div>;
   }
-  console.log(data);
-  return <></>;
+  const ceremonies = data ? data.paginatedReadCeremonies.edges : [];
+  return (
+    <>
+      <CeremonyOptions
+        ceremony={ceremony}
+        ceremonies={ceremonies}
+        setCeremony={setCeremony}
+      />
+      <CeremonyForm ceremony={ceremony} setCeremony={setCeremony} />
+    </>
+  );
 };
 
 export default GraduationForm;

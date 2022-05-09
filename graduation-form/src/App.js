@@ -1,5 +1,5 @@
 import React from "react";
-import { isExpired, decodeToken } from "react-jwt";
+import { isExpired } from "react-jwt";
 import "./App.css";
 import {
   ApolloClient,
@@ -26,7 +26,7 @@ function App({ element }) {
     return {
       headers: {
         ...headers,
-        authorization: token ? `Bearer ${token}` : "",
+        authorization: token ? token : "",
       },
     };
   });
