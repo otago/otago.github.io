@@ -8,8 +8,9 @@ function App({ element }) {
   const token = new URLSearchParams(window.location.search).get("token");
   const myDecodedToken = decodeToken(token);
   if (isExpired(token)) {
-    return (window.location.href =
-      "https://jeffrey.op.ac.nz/tokens/token?ignore-saml-redirect=1");
+    return (window.location.href = `https://jeffrey.op.ac.nz/tokens/token?ignore-saml-redirect=1&BackURL=${
+      window.location.href.split("?")[0]
+    }`);
   }
   console.log(myDecodedToken);
   const graphqlURL = element.getAttribute("data-graphql-url");
