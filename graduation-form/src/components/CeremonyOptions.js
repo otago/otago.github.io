@@ -3,7 +3,7 @@ const CeremonyOptions = ({ ceremony, ceremonies, setCeremony }) => {
     return <></>;
   }
   return (
-    <>
+    <div>
       {ceremonies.map(({ node }) => {
         return (
           <button
@@ -15,7 +15,7 @@ const CeremonyOptions = ({ ceremony, ceremonies, setCeremony }) => {
           </button>
         );
       })}
-    </>
+    </div>
   );
 };
 
