@@ -2,6 +2,7 @@ import Ceremony from "./Ceremony";
 import Email from "./Email";
 import React, { useEffect, useState } from "react";
 import Disclaimer from "./Disclaimer";
+import Attendance from "./Attendance";
 
 const Fields = ({ ceremonies }) => {
   const [activeCeremony, setActiveCeremony] = useState(null);
@@ -16,7 +17,9 @@ const Fields = ({ ceremonies }) => {
             activeCeremony={activeCeremony}
             setActiveCeremony={setActiveCeremony}>
             <Email />
-            <Disclaimer ceremony={activeCeremony}></Disclaimer>
+            <Disclaimer ceremony={activeCeremony}>
+              <Attendance ceremony={activeCeremony} />
+            </Disclaimer>
           </Ceremony>
         );
       })}
