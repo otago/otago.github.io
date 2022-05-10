@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from "react";
-
-const Ceremony = ({ ceremony, children }) => {
+const Ceremony = ({
+  ceremony,
+  children,
+  activeCeremony,
+  setActiveCeremony,
+}) => {
   const { Title } = ceremony;
-  const [active, setActive] = useState(false);
-  useEffect(() => {}, [active]);
   return (
     <>
       <div>
         <button
           onClick={() => {
-            setActive(!active);
+            setActiveCeremony(ceremony);
           }}>
           {Title}
         </button>
       </div>
-      {active ? <div>{children}</div> : <></>}
+      {activeCeremony === ceremony ? <div>{children}</div> : <></>}
     </>
   );
 };
