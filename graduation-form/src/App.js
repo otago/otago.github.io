@@ -8,7 +8,7 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import GraduationForm from "./components/GraduationForm";
+import Form from "./components/Form";
 
 function App({ element }) {
   const tokenURL = element.getAttribute("data-token-url");
@@ -37,7 +37,7 @@ function App({ element }) {
   return (
     <div className="graduation-form">
       <ApolloProvider client={client}>
-        <GraduationForm />
+        <Form />
       </ApolloProvider>
     </div>
   );
