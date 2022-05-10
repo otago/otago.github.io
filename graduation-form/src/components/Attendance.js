@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Attending from "./Attending";
 import Deferring from "./Deferring";
 import NotAttending from "./NotAttending";
 
@@ -47,6 +48,7 @@ const Attendance = ({ ceremony }) => {
         <label htmlFor="deferring">Defer</label>
       </div>
       <div>
+        {attending ? <Attending ceremony={ceremony} /> : <></>}
         {notAttending ? <NotAttending ceremony={ceremony} /> : <></>}
         {deferring ? <Deferring ceremony={ceremony} /> : <></>}
       </div>
