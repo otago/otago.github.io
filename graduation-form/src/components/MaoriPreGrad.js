@@ -63,7 +63,7 @@ const MaoriPreGrad = ({
               setMaoriPreGrad(event.target.checked);
             }}
           />
-          <label for="maoriPreGrad">Maori Pre-graduation Function</label>
+          <label htmlFor="maoriPreGrad">Maori Pre-graduation Function</label>
           <div dangerouslySetInnerHTML={{ __html: Yes_MaoriPreGradContent }} />
           {maoriPreGrad ? (
             <select

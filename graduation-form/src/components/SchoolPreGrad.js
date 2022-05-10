@@ -63,7 +63,7 @@ const SchoolPreGrad = ({
               setSchoolPreGrad(event.target.checked);
             }}
           />
-          <label for="SchoolPreGrad">School Pre-graduation Function</label>
+          <label htmlFor="SchoolPreGrad">School Pre-graduation Function</label>
           <div dangerouslySetInnerHTML={{ __html: Yes_SchoolPreGradContent }} />
           {SchoolPreGrad ? (
             <select
