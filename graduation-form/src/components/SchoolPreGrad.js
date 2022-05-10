@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 const SchoolPreGrad = ({
   ceremony: { Yes_HasSchoolPreGrad, Yes_SchoolPreGradContent },
 }) => {
-  const [SchoolPreGrad, setSchoolPreGrad] = useState(false);
+  const [schoolPreGrad, setSchoolPreGrad] = useState(false);
   const [tickets, setTickets] = useState(0);
   const ticketOptions = [
     {
@@ -50,7 +50,7 @@ const SchoolPreGrad = ({
       value: 10,
     },
   ];
-  useEffect(() => {}, [SchoolPreGrad, tickets]);
+  useEffect(() => {}, [schoolPreGrad, tickets]);
   return (
     <>
       {Yes_HasSchoolPreGrad ? (
@@ -58,14 +58,14 @@ const SchoolPreGrad = ({
           <input
             id="SchoolPreGrad"
             type="checkbox"
-            value={SchoolPreGrad}
+            value={schoolPreGrad}
             onChange={(event) => {
               setSchoolPreGrad(event.target.checked);
             }}
           />
           <label htmlFor="SchoolPreGrad">School Pre-graduation Function</label>
           <div dangerouslySetInnerHTML={{ __html: Yes_SchoolPreGradContent }} />
-          {SchoolPreGrad ? (
+          {schoolPreGrad ? (
             <select
               id="tickets"
               value={tickets}
